@@ -1,0 +1,36 @@
+
+ 
+<% include partials/header %>
+<div class="container">
+    <div class="row">
+       
+        <h1 style="text-align: center">In order to list yourself, you need to make an account</h1>
+        
+     
+    
+
+        <h2 style="text-align: center">Log in real quick so you can list yourself</h2>
+
+        
+
+        <div style="width: 30%; margin: 25px auto;">
+            <form action="/login" method="post">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="username" placeholder="email">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="password" placeholder="password">
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit" value="login"class="btn btn-lg btn-primary btn-block">Log in!!</button>
+                </div>
+                
+               
+            
+     
+        </div>
+    </div>
+</div>
+<% include partials/footer %>
+
