@@ -176,7 +176,7 @@ function isLoggedIn(req, res, next){
         
         return next();
         
-    } res.redirect("/login")
+    } res.redirect("/register")
 }
 
 app.listen(process.env.PORT, process.env.IP, function(){
