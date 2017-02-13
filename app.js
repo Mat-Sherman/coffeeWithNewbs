@@ -7,7 +7,9 @@ var LocalStrategy = require("passport-local")
 var User = require("./models/users")
 
 
-mongoose.connect("mongodb://localhost/help_a_newbie");
+//mongoose.connect("mongodb://localhost/help_a_newbie");
+mongoose.connect("mongodb://Mat_Sherman:Barnum12!@ds151289.mlab.com:51289/coffeewithanewb");
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 
