@@ -114,6 +114,13 @@ app.get("/community/:id", function (req, res){
 });
 
 
+app.get("/rules", function (req, res){
+    
+    res.render("rules")
+    
+});
+
+
 
 // AUTH Routes
 
@@ -137,7 +144,7 @@ app.post("/register", function(req, res){
            
            passport.authenticate("local")(req, res, function(){
                
-               res.redirect("community/new")
+               res.redirect("rules")
                
            })
        })
