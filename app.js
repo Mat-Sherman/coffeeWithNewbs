@@ -21,7 +21,7 @@ var communitySchema = new mongoose.Schema({
     name: String,
     image: String,
     email: String,
-    description: String 
+    desc: String 
 });
 
 var Community = mongoose.model("Community", communitySchema);
@@ -57,7 +57,7 @@ app.use(function(req, res, next){
 app.get("/", function(req, res){
      
     res.render("welcome")
-})
+});
 
 app.get("/community", function(req, res){
     
@@ -91,8 +91,9 @@ app.post("/community", function(req, res){
   var name =  req.body.name
  var image =   req.body.image
  var email = req.body.email
+ var desc = req.body.desc
  
-    var newCommunity = {name: name, image: image, email: email}
+    var newCommunity = {name: name, image: image, email: email, desc: desc}
 Community.create(newCommunity, function( err, newlyCreated) {
     
     if (err){

@@ -1,5 +1,5 @@
 
- <% include partials/header %>
+<% include partials/header %>
  
 
  <div class="container">
@@ -7,12 +7,13 @@
          <div class="container">
              <h1>#yesphx</h1>
              <h2> Browse these community members who want to meet you.  Click the email button and say hi! :)</h2>
-             <h3>Want to list yourself? Click below to get started</h3>
+             <h3>Want to list yourself? Sign up for an account and wait for the "list yourself" button to appear again. </h3>
+             <h4>We want to keep the amount of listed people low in the beginning so there isn't an overwhleming amount of people for the newbies to pick from. Once the demand picks up, we will let more community members list themsleves.</h4>
              <br>
              <br>
              
              <p>
-                <a class="btn btn-primary btn-large" href="/community/new">Add yourself</a>
+              <!--  <a class="btn btn-primary btn-large" href="/community/new">Add yourself</a> -->
              </p>
          </div>
      </header>
@@ -28,8 +29,12 @@
                 <div class="thumbnail">
                    <img src="<%= community.image %>">
                    <div class="caption">
-                       <h4><%= community.name %></h4>
+                       <h3><%= community.name %></h3>
                    </div>
+                  
+                       
+                       <h4> <%=community.desc %></h4>
+             
                     <p> 
                 <a href ="mailto:<%=community.email%>" class="btn btn-primary">Email</a>
                 
