@@ -4,6 +4,10 @@ var passport = require("passport")
 var User = require("../models/users")
 
 
+
+
+
+
 router.get("/", function(req, res){
 
 
@@ -34,6 +38,14 @@ router.post("/register", function(req, res){
            })
        })
        
+});
+
+
+
+router.get("/rules", function (req, res){
+    // find the person with provided ID and render SHOW Template
+    res.render("rules")
+    
 });
 
 

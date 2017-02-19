@@ -8,6 +8,10 @@ var LocalStrategy = require("passport-local")
 var User = require("./models/users")
 
 
+var communityRoutes = require("./routes/community")
+var indexRoutes = require("./routes/index")
+
+
 //mongoose.connect("mongodb://localhost/help_a_newbie");
 mongoose.connect("mongodb://Mat_Sherman:Barnum12!@ds151289.mlab.com:51289/coffeewithanewb");
 
@@ -17,8 +21,7 @@ app.use(express.static(__dirname + "/public"))
 app.use(methodOverride("_method"));
 
 
-
-var communitySchema = new mongoose.Schema({
+/*var communitySchema = new mongoose.Schema({
     
     
     name: String,
@@ -30,12 +33,10 @@ var communitySchema = new mongoose.Schema({
     favCoffeeDrink: String
 });
 
-var Community = mongoose.model("Community", communitySchema);
+*/
 
+//var Community = mongoose.model("Community", communitySchema);
 
-
-    
-    
     
 app.use(require("express-session")({
     
@@ -59,14 +60,14 @@ app.use(function(req, res, next){
 });
 
 // ROutes
-
+/*
 app.get("/", function(req, res){
     
 
     res.render("welcome")
 });
 
-app.get("/nextsteps", function(req, res) {
+ app.get("/nextsteps", function(req, res) {
     
     
     res.render("nextsteps")
@@ -255,6 +256,9 @@ function isLoggedIn(req, res, next){
 }
 
 
+*/
+app.use(indexRoutes);
+app.use(communityRoutes);
 
 
 app.listen(process.env.PORT, process.env.IP, function(){

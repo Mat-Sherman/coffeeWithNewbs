@@ -4,8 +4,6 @@ var Community = require("../models/index")
 
 
 
-
-
 router.get("/nextsteps", function(req, res) {
     
     
@@ -45,8 +43,17 @@ router.post("/community", function(req, res){
  var image =   req.body.image
  var email = req.body.email
  var desc = req.body.desc
+ var bestWayToReachMe = req.body.bestWayToReachMe
+ var favCoffeeDrink = req.body.favCoffeeDrink
+ var user = {
+     
+     id: req.user._id,
+     username: req.user.username
+ }
  
-    var newCommunity = {name: name, image: image, email: email, desc: desc}
+    var newCommunity = {name: name, image: image, email: email, desc: desc, bestWayToReachMe: bestWayToReachMe, favCoffeeDrink: favCoffeeDrink, user: user}
+    
+    console.log(req.user);
 Community.create(newCommunity, function( err, newlyCreated) {
     
     if (err){
@@ -54,14 +61,14 @@ Community.create(newCommunity, function( err, newlyCreated) {
         console.log(err)
         
             } else {
-                
+                console.log(newlyCreated)
                 res.redirect("/community")
             }
     })
 
 });
 
-router.get("/community/:id", function (req, res){
+router.get("/community/:id", isLoggedIn, function (req, res){
     Community.findById(req.params.id, function(err, moreInfo) {
         
         if(err){
@@ -80,20 +87,33 @@ router.get("/community/:id", function (req, res){
 
 //edit campgrounds
 
-
-
-
-
-
-
-// update campgrounf
-
-
-router.get("/rules", function (req, res){
-    // find the person with provided ID and render SHOW Template
-    res.render("rules")
+router.get("/community/:id/edit", function(req, res){
     
-});
+    Community.findById(req.params.id, function( err, moreInfo){
+        if (err){
+            
+            res.render("/community")
+        } else {
+            
+            res.render("edit", {community: moreInfo}); 
+        }
+        
+    });
+})
+
+router.put("/:id", function (req, res){
+    
+    Community.findByIdAndUpdate(req.params.id, req.body.community, function(err, updatedInfo){
+        
+        if (err){
+            
+            res.redirect("/community")
+        } else {
+            
+            res.redirect("/community/" + req.params.id );
+        }
+    })
+})
 
 
 function isLoggedIn(req, res, next){
@@ -104,7 +124,6 @@ function isLoggedIn(req, res, next){
         
     } res.redirect("/register")
 }
-
 
 
 
