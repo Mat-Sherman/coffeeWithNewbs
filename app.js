@@ -2,6 +2,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose")
 var app = express();
+var methodOverride = require("method-override")
 var passport =  require("passport")
 var LocalStrategy = require("passport-local")
 var User = require("./models/users")
@@ -12,6 +13,8 @@ mongoose.connect("mongodb://Mat_Sherman:Barnum12!@ds151289.mlab.com:51289/coffee
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
+app.use(express.static(__dirname + "/public"))
+app.use(methodOverride("_method"));
 
 
 
@@ -21,7 +24,10 @@ var communitySchema = new mongoose.Schema({
     name: String,
     image: String,
     email: String,
-    desc: String 
+    desc: String ,
+    firstName: String,
+    bestWayToReachMe: String,
+    favCoffeeDrink: String
 });
 
 var Community = mongoose.model("Community", communitySchema);
@@ -56,9 +62,7 @@ app.use(function(req, res, next){
 
 app.get("/", function(req, res){
     
-    
-    
-     
+
     res.render("welcome")
 });
 
@@ -101,8 +105,10 @@ app.post("/community", function(req, res){
  var image =   req.body.image
  var email = req.body.email
  var desc = req.body.desc
+ var bestWayToReachMe = req.body.bestWayToReachMe
+ var favCoffeeDrink = req.body.favCoffeeDrink
  
-    var newCommunity = {name: name, image: image, email: email, desc: desc}
+    var newCommunity = {name: name, image: image, email: email, desc: desc, bestWayToReachMe: bestWayToReachMe, favCoffeeDrink: favCoffeeDrink}
 Community.create(newCommunity, function( err, newlyCreated) {
     
     if (err){
@@ -117,14 +123,58 @@ Community.create(newCommunity, function( err, newlyCreated) {
 
 });
 
-app.get("/community/:id", function (req, res){
+app.get("/community/:id", isLoggedIn, function (req, res){
+    Community.findById(req.params.id, function(err, moreInfo) {
+        
+        if(err){
+            
+            console.log(err)
+            
+        } else {
+            
+            res.render("show", {community: moreInfo});
+        }
+        
+    })
+  //  req.params.id
     
-    res.render ("/login");
 });
+
+//edit campgrounds
+
+app.get("/community/:id/edit", function(req, res){
+    
+    Community.findById(req.params.id, function( err, moreInfo){
+        if (err){
+            
+            res.render("/community")
+        } else {
+            
+            res.render("edit", {community: moreInfo}); 
+        }
+        
+    });
+})
+
+app.put("/:id", function (req, res){
+    
+    Community.findByIdAndUpdate(req.params.id, req.body.community, function(err, updatedInfo){
+        
+        if (err){
+            
+            res.redirect("/community")
+        } else {
+            
+            res.redirect("/community/" + req.params.id );
+        }
+    })
+})
+
+// update campgrounf
 
 
 app.get("/rules", function (req, res){
-    
+    // find the person with provided ID and render SHOW Template
     res.render("rules")
     
 });
@@ -159,6 +209,8 @@ app.post("/register", function(req, res){
        })
        
 });
+
+
 
 app.get("/faq", function(req, res){
     
@@ -201,6 +253,9 @@ function isLoggedIn(req, res, next){
         
     } res.redirect("/register")
 }
+
+
+
 
 app.listen(process.env.PORT, process.env.IP, function(){
    console.log("The server is up lets gooooo");

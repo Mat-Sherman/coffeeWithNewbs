@@ -1,1 +1,44 @@
-<h1> THis is the show template</h1>
+<% include partials/header %>
+
+<div class=" container">
+    <div class="row">
+        <div class="col-md-3">
+            
+              <div class="list-group">
+                 <a href="/community" class="btn btn-primary btn-lg"> Go Back</a>
+                  
+              </div>
+            
+        </div>
+        <div class="col-md-9">
+            <div class="thumbnail">
+                <img class="img-responsive" style=" width: 500; height: 500" src="<%= community.image %>" >
+                <div class="caption-full">
+                    <h4 class="pull-right"> My favorite coffee drink is a <%= community.favCoffeeDrink %>  </h4>
+                    <h1> <%= community.name %> </h1>
+                    <h3>Description</h3>
+                    <p><%= community.desc %></p>
+                </div>
+                <h3>Best way to get in touch with me:</h3> <p>  <%= community.bestWayToReachMe %> </p>
+                
+            
+              
+            </div>
+            
+            
+            
+              
+        </div>
+        </div>
+        
+    </div>
+
+
+
+
+
+
+
+</div>
+
+<% include partials/footer %>
