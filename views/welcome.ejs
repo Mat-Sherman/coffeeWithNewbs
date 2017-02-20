@@ -22,12 +22,16 @@
    <div class="row text-center" style="display:flex; flex-wrap: wrap;">
             <div class="col-md-3 col-sm-6">
                 <div class="thumbnail">
-                    <a href="/community">
+                    <a href="/community" id="testid">
                         
                         <img src="http://aztechbeat.com/wp-content/uploads/2015/10/yesphx_logo.jpg">
                     </a>
                    
-                   
+                   <script type="text/javascript">
+    mixpanel.track_links("#testid", "CHAT TEST", {
+        "referrer": document.referrer
+    });
+</script>
                    <div class="caption">
                       
                    </div>
