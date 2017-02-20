@@ -34,8 +34,8 @@ router.get("/community", function(req, res){
 router.get("/community/new", isLoggedIn,  function(req, res){
     
     
-    res.render("new.ejs")
-})
+    res.render("community")
+});
 
 router.post("/community", function(req, res){
     
@@ -89,16 +89,46 @@ router.get("/community/:id", isLoggedIn, function (req, res){
 
 router.get("/community/:id/edit", function(req, res){
     
-    Community.findById(req.params.id, function( err, moreInfo){
+    Community.findById(req.params.id, function(err, editSomeone){
+        
         if (err){
             
-            res.render("/community")
+            res.redirect("community")
         } else {
+          
+                res.render("edit", {community: editSomeone});
             
-            res.render("edit", {community: moreInfo}); 
         }
+    })
+    
+    
+    router.put(":id/", function( req, res ){
         
-    });
+        Community.findByIdAndUpdate(req.params.id, req.body.community, function( err, editSomeone){
+            if (err) {
+                
+                console.log(err)
+            } else {
+                
+                res.redirect("/community/" + req.params.co)
+            }
+            
+            
+        })
+    })
+    
+
+    
+    // Community.findById(req.params.id, function( err, moreInfo){
+    //     if (err){
+            
+    //         res.render("/community")
+    //     } else {
+            
+    //         res.render("edit", {community: moreInfo}); 
+    //     }
+        
+    // });
 })
 
 router.put("/:id", function (req, res){
