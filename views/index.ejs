@@ -10,21 +10,37 @@
              <br>
              <br>
              
-        <a href="/register" class="btn btn-primary btn-lg">Make an Account! :)</a> 
+        <a href="/register" class="btn btn-primary btn-lg" id="makeAnAccount">Make an Account! :)</a> 
         
-             
+             <script type="text/javascript">
+    mixpanel.track_links("#makeAnAccount", "Make an account pressed", {
+        "referrer": document.referrer
+    });
+</script>
 </div>
 
              <br>
               <br>
               
-              <a href="https://www.facebook.com/groups/2016337025260060/" target="_blank" class="btn btn-info">Join our facebook community!</a>
+              <a href="https://www.facebook.com/groups/2016337025260060/" target="_blank" class="btn btn-info" id="facebookCommunity">Join our facebook community!</a>
+              
+              <script type="text/javascript">
+    mixpanel.track_links("#facebookCommunity", "Join Facebook Community", {
+        "referrer": document.referrer
+    });
+</script>
               <br>
               <br>
-             <a href ="/faq" class="btn btn-info">FAQ's?</a>
+             <a href ="/faq" class="btn btn-info" id="faq">FAQ's?</a>
+             
+              <script type="text/javascript">
+    mixpanel.track_links("#faq", "Faq's Pressed", {
+        "referrer": document.referrer
+    });
+</script>
               <br>
              
-             
+            
              
              <br>
              <br>
@@ -60,8 +76,13 @@
                        <h4> <%=community.desc %></h4>
              
                     <p> 
-                <a href="/community/<%= community._id %>" class="btn btn-primary">More Info</a>
+                <a href="/community/<%= community._id %>" class="btn btn-primary" id="moreInfoPressed">More Info</a>
                 
+                 <script type="text/javascript">
+    mixpanel.track_links("#moreInfoPressed", "More info pressed", {
+        "referrer": document.referrer
+    });
+</script>
                 
                 </p>
                 
