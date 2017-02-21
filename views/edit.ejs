@@ -1,63 +1,33 @@
 <% include partials/header %>
 
 
+<h1>Edit <%= community.name %> </h1>
 
-<div class="container">
-    <div class="row">
-       
-        <h1 style="text-align: center">Edit <%= community.name %> </h1>
-        
-     
-        
-        <br>
-         <br>
-          <br>
-           <br>
-        
+  <h2 style="text-align: center">Ready to list yourself?</h2>
 
-        <div style="width: 30%; margin: 25px auto;">
+
+ <div style="width: 30%; margin: 25px auto;">
             <form action="/community/<%= community._id %>?_method=PUT" method="POST">
                 <div class="form-group">
-                    <input class="form-control" type="text" name="community[name]" value="<%=community.name %>">
+                    <input class="form-control" type="text" name="community[name]" placeholder="name" value="<%= community.name %>">
                 </div>
                 <div class="form-group">
-              
-                    <input class="form-control" type="text" name="community[image]" value="<%=community.image %>">
-                                        <p> Go to facebook, right click on your favorite picture, click "copy image URL", and paste it into the text box above.</p>
-
-                   </div>   
-                <div class="form-group">
-                    <input class="form-control" type="text" name="community[email]" value="<%=community.email %>">
+                    <input class="form-control" type="text" name="community[image]" placeholder="image url" value="<%= community.image %>">
+                    <p> Go to facebook, right click on your favorite picture, click "copy image URL", and paste it into the text box above.</p>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="community[desc]" value="<%=community.desc %>">
+                    <input class="form-control" type="text" name=community["email]" placeholder="email" value="<%= community.email %>">
                 </div>
                 <div class="form-group">
-                    
-                    <input class="form-control" type="text" name="community[bestWayToReachMe]" value="<%=community.bestWayToReachMe %>.">
-                                        <p>Must include one way to directly contact you (Email, Facebook, Text, etc.) The more descriptive you are here,
-                                        the more likely people will contact you for coffee.</p>
-
+                    <input class="form-control" type="text" name=community["desc]" placeholder="Short description of who you are" value="<%= community.desc %>">
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="community[favCoffeeDrink]" value="<%=community.favCoffeeDrink %>">
-                    
-                </div>
-                
-                
-                
-                <div class="form-group">
-                    
-                    
                     <button class="btn btn-lg btn-primary btn-block">Submit!</button>
                 </div>
                 
                
-            
-     
-        </div>
-    </div>
-</div>
+
+<p>Edit form goes here</p>
 
 
 

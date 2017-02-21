@@ -9,44 +9,15 @@
              <h2> Browse these community members who want to meet you.  Click the "more info"  button and learn more about everyone listed!</h2>
              <br>
              <br>
+             <br>
+             <br>
+        <button class="btn btn-primary btn-lg">Listing Will Available on 2/27/17  </button>
              
-        <a href="/register" class="btn btn-primary btn-lg" id="makeAnAccount">Make an Account! :)</a> 
-        
-             <script type="text/javascript">
-    mixpanel.track_links("#makeAnAccount", "Make an account pressed", {
-        "referrer": document.referrer
-    });
-</script>
+             
 </div>
 
              <br>
-              <br>
-              
-              <a href="https://www.facebook.com/groups/2016337025260060/" target="_blank" class="btn btn-info" id="facebookCommunity">Join our facebook community!</a>
-              
-              <script type="text/javascript">
-    mixpanel.track_links("#facebookCommunity", "Join Facebook Community", {
-        "referrer": document.referrer
-    });
-</script>
-              <br>
-              <br>
-             <a href ="/faq" class="btn btn-info" id="faq">FAQ's?</a>
-             
-              <script type="text/javascript">
-    mixpanel.track_links("#faq", "Faq's Pressed", {
-        "referrer": document.referrer
-    });
-</script>
-              <br>
-             
-            
-             
-             <br>
-             <br>
-             
-             
-             
+             <a href ="/faq" class="btn btn-primary">FAQ's?</a>
              <br>
              <div style="height:0px;overflow:hidden">
    
@@ -76,13 +47,8 @@
                        <h4> <%=community.desc %></h4>
              
                     <p> 
-                <a href="/community/<%= community._id %>" class="btn btn-primary" id="moreInfoPressed">More Info</a>
+                <a href="/community/<%= community._id %>" class="btn btn-primary">More Info</a>
                 
-                 <script type="text/javascript">
-    mixpanel.track_links("#moreInfoPressed", "More info pressed", {
-        "referrer": document.referrer
-    });
-</script>
                 
                 </p>
                 
