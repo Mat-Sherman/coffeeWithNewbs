@@ -204,7 +204,7 @@ app.post("/register", function(req, res){
            
            passport.authenticate("local")(req, res, function(){
                
-               res.redirect("rules")
+               res.redirect("index")
                
            })
        })
@@ -256,7 +256,13 @@ function isLoggedIn(req, res, next){
 }
 
 
+
+
 */
+
+
+
+
 app.use(indexRoutes);
 app.use(communityRoutes);
 
